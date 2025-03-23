@@ -8,7 +8,6 @@ const { passwordUpdated } = require("../mail/templates/passwordUpdate")
 const Profile = require("../models/Profile")
 require("dotenv").config()
 
-// Signup Controller for Registering USers
 
 exports.signup = async (req, res) => {
   
@@ -54,18 +53,18 @@ exports.signup = async (req, res) => {
     console.log('recent otp :',recentOtp);
 
     //validate OTP
-    // if(recentOtp.length === 0 ){
-    //     //Otp is not found
-    //     return res.status(400).json({
-    //         success:false,
-    //         message:'otp is not found'
-    //     })
-    // }else if(otp !== recentOtp[0].otp){
-    //     return res.status(400).json({
-    //         success:false,
-    //         message:'otp is not matching'
-    //     })
-    // }
+    if(recentOtp.length === 0 ){
+        //Otp is not found
+        return res.status(400).json({
+            success:false,
+            message:'otp is not found'
+        })
+    }else if(otp !== recentOtp[0].otp){
+        return res.status(400).json({
+            success:false,
+            message:'otp is not matching'
+        })
+    }
 
     //hash the password
     const hashedPassword = await bcrypt.hash(password,10);
@@ -112,10 +111,8 @@ exports.signup = async (req, res) => {
 // Login controller for authenticating users
 exports.login = async (req, res) => {
   try {
-    // Get email and password from request body
     const { email, password } = req.body
 
-    // Check if email or password is missing
     if (!email || !password) {
       // Return 400 Bad Request status code with error message
       return res.status(400).json({
@@ -124,10 +121,8 @@ exports.login = async (req, res) => {
       })
     }
 
-    // Find user with provided email
     const user = await User.findOne({ email }).populate("additionalDetails")
 
-    // If user not found with provided email
     if (!user) {
       // Return 401 Unauthorized status code with error message
       return res.status(401).json({
