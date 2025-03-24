@@ -209,7 +209,6 @@ exports.sendotp = async (req, res) => {
     res.status(200).json({
       success: true,
       message: `OTP Sent Successfully`,
-      otp,
     })
   } catch (error) {
     console.log(error.message)
@@ -272,7 +271,6 @@ exports.changePassword = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Password updated successfully" })
   } catch (error) {
-    // If there's an error updating the password, log the error and return a 500 (Internal Server Error) error
     console.error("Error occurred while updating password:", error)
     return res.status(500).json({
       success: false,

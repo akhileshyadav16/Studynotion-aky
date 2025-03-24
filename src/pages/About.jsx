@@ -13,7 +13,7 @@ import Footer from "../components/common/Footer"
 const About = () => {
   return (
     <div >
-      <section className="bg-richblack-700">
+      <section className="bg-[#0B111D]">
         <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-center text-white">
           <header className="mx-auto py-20 text-4xl font-semibold lg:w-[70%]">
             Driving Innovation in Online Education for a

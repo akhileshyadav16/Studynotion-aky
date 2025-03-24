@@ -53,7 +53,7 @@ const LearningGrid = () => {
             key={i}
             className={`${i === 0 && "xl:col-span-2 xl:h-[294px]"}  ${
               card.order % 2 === 1
-                ? "bg-richblack-700 h-[294px]"
+                ? "bg-[#0B111D] h-[294px]"
                 : card.order % 2 === 0
                 ? "bg-richblack-800 h-[294px]"
                 : "bg-transparent"
